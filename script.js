@@ -1,22 +1,17 @@
+// './data/product.js';
+
+import {isGoodProduct,productCategory,Product}  from './data/Product.js'
+
 const sectionList = document.getElementById('sectionList')
 const sectionNew = document.getElementById('sectionNew')
 const sectionEdit = document.getElementById('sectionEdit')
 const listLink = document.getElementById('listLink')
 const newLink = document.getElementById('newLink')
 
-
-
 const baseApi = 'https://fakestoreapi.com/products' 
 
-
-class Product{
-    constructor(id,name,price,color){
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.color = color;
-   }
-}
+const good = isGoodProduct(14);
+console.log(productCategory)
 
 
 newLink.addEventListener("click",()=>{ 
@@ -47,7 +42,11 @@ function showSection(sectionsId){
     }
 }
 
+function editProduct(id){
+    alert(id);
+}
 
+window.editProduct = editProduct
 
 function renderTr(product){
     let jsCall = `editProduct(${product.id})`;
@@ -62,6 +61,9 @@ function renderTr(product){
     productTableBody.innerHTML = productTableBody.innerHTML + template;
 } 
 // 
+
+
+
 
 function refreshItems(){
 
@@ -81,7 +83,7 @@ function refreshItems(){
             //json -> items
             console.log(array)
             array.forEach(prod=>{
-                p = new Product(prod.id,
+                const p = new Product(prod.id,
                     prod.title,
                     prod.price,
                     prod.category)                    
